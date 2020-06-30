@@ -2,9 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Checklist(models.Model):
-    store_name = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
+
 
 class item(models.Model):
     item_desc = models.CharField(max_length=100)
@@ -20,3 +18,8 @@ class item(models.Model):
 class pop(models.Model):
     pop_desc = models.CharField(max_length=20)
 
+class Checklist(models.Model):
+    store_name = models.CharField(max_length=200)
+    pub_date = models.DateTimeField('date published')
+    list_of_items = models.ForeignKey(item)
+    list_of_pop = models.ForeignKey(pop)
