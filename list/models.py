@@ -12,17 +12,17 @@ class item(models.Model):
     def __str__(self):
         return self.item_desc
 
-'''
+
     class is_displayed(models.IntegerChoices):
-        NO = 0, _('No')
-        YES = 1, _('Yes')
+        NO = 0, ('No')
+        YES = 1, ('Yes')
         
-        __empty__ = _('(Unknown)')
-'''
+        __empty__ = ('(Unknown)')
+
 class pop(models.Model):
     pop_desc = models.CharField(max_length=20)
 
-    def __str_(self):
+    def __str__(self):
         return self.pop_desc
 
 class Checklist(models.Model):
@@ -34,3 +34,6 @@ class Checklist(models.Model):
     list_of_pop = models.ForeignKey(
         pop,
         on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.store_name
