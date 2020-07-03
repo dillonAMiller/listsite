@@ -1,0 +1,14 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'list/style.css' %}">
+</link>
+
+{% if store_list %}
+    <ul>
+        {% for checklist in store_list %}
+            <li><a href="{% url 'list:detail' Checklist.id %}">{{ Checklist.store_name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No Checklists are available.</p>
+{% endif %}
