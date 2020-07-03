@@ -33,12 +33,17 @@ class pop(models.Model):
 class Checklist(models.Model):
     store_name = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
+    list_of_items = models.ManyToManyField(item)
+    list_of_pop = models.ManyToManyField(pop)
+    
+    '''
     list_of_items = models.ForeignKey(
         item,
         on_delete=models.CASCADE)
     list_of_pop = models.ForeignKey(
         pop,
         on_delete=models.CASCADE)
+    '''
 
     def __str__(self):
         return self.store_name
