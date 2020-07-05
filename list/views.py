@@ -9,9 +9,17 @@ from django.utils import timezone
 
 
 # Create your views here.
- 
+'''
 def index(request):
     store_list = Checklist.objects.order_by('store_name')
     output = ', '.join([q.store_name for q in store_list])
     return HttpResponse(output)
+'''
+def index(request):
+    store_list = Checklist.objects.order_by('store_name')
+    template = loader.get_template('list/index.html')
+    context = {
+        'store_list': store_list,
+    }
+    return HttpResponse(template.render(context, request))
 
