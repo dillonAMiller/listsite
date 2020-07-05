@@ -24,6 +24,7 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 '''
+
 class IndexView(generic.ListView):
     template_name = 'list.index.html'
     context_object_name = 'store_list'
@@ -38,4 +39,4 @@ class DetailView(generic.DetailView):
     def get_queryset(self):
         return Checklist.objects
 
-        
+ 
