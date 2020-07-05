@@ -15,6 +15,7 @@ def index(request):
     output = ', '.join([q.store_name for q in store_list])
     return HttpResponse(output)
 '''
+'''
 def index(request):
     store_list = Checklist.objects.order_by('store_name')
     template = loader.get_template('list/index.html')
@@ -22,4 +23,19 @@ def index(request):
         'store_list': store_list,
     }
     return HttpResponse(template.render(context, request))
+'''
+class IndexView(generic.ListView):
+    template_name = 'list.index.html'
+    context_object_name = 'store_list'
 
+    def get_queryset(self):
+        return Checklist.objects.order_by('store_name')
+
+class DetailView(generic.DetailView):
+    model = Checklist
+    template_name = 'list/detail.html'
+
+    def get_queryset(self):
+        return Checklist.objects
+
+        
