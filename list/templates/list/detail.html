@@ -1,15 +1,15 @@
 
-{{ checklist }}
+<!--{{ checklist }}-->
 
-<!-- trying if similar to index.html
+<!-- trying if similar to index.html -->
 {% if list_of_sets %}
     <ul>
-        {% for sets in list_of_sets %}
-            <li><a href="/list/{{ sets.id }}"><h1>{{ sets.set_name }}</h1></a></li>
+        {% for i in list_of_sets %}
+            <li><a href="/list/{{ i.id }}"><h1>{{ i }}</h1></a></li>
         {% endfor %}
     </ul>
 {% else %}
     <p>No Sets are available.</p>
 {% endif %}
--->
+
 
