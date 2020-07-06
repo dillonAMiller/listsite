@@ -42,6 +42,9 @@ class sets(models.Model):
     items_in_set = models.ManyToManyField(item)
     pop_in_set = models.ManyToManyField(pop)
 
+    def __str__(self):
+        return self.set_name
+
     '''
     list_of_items = models.ForeignKey(
         item,
@@ -58,6 +61,7 @@ class Checklist(models.Model):
     store_name = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     list_of_sets = models.ManyToManyField(sets)
+    objects = models.Manager()
 
     def __str__(self):
         return self.store_name

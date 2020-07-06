@@ -1,5 +1,15 @@
-<h1>{{ Checklist.store_name }}</h1>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong>
-</p>{% endif %}
+{{ checklist }}
+
+<!-- trying if similar to index.html
+{% if list_of_sets %}
+    <ul>
+        {% for sets in list_of_sets %}
+            <li><a href="/list/{{ sets.id }}"><h1>{{ sets.set_name }}</h1></a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No Sets are available.</p>
+{% endif %}
+-->
 

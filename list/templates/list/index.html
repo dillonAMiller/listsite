@@ -1,12 +1,9 @@
-{% load static %}
-
-<link rel="stylesheet" type="text/css" href="{% static 'list/style.css' %}">
-</link>
-
+<!-- the object is upper case but the iterable object checklist 
+    created in the for statement is lower case-->
 {% if store_list %}
     <ul>
         {% for checklist in store_list %}
-            <li><a href="{% url 'list:detail' Checklist.id %}">{{ Checklist.store_name }}</a></li>
+            <li><a href="/list/{{ checklist.id }}"><h1>{{ checklist }}</h1></a></li>
         {% endfor %}
     </ul>
 {% else %}

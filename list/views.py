@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
 from .models import Checklist, item, pop, sets
 from django.http import Http404
@@ -9,12 +9,20 @@ from django.utils import timezone
 
 
 # Create your views here.
+#useless index view
+'''
+def index(request):
+    return HttpResponse("Checklist index")
+'''
+# view list of stores no template
 '''
 def index(request):
     store_list = Checklist.objects.order_by('store_name')
     output = ', '.join([q.store_name for q in store_list])
     return HttpResponse(output)
 '''
+
+# view with template
 '''
 def index(request):
     store_list = Checklist.objects.order_by('store_name')
@@ -25,6 +33,42 @@ def index(request):
     return HttpResponse(template.render(context, request))
 '''
 
+# view with template and render
+
+def index(request):
+    store_list = Checklist.objects.order_by('pub_date')
+    context = {'store_list': store_list}
+    return render(request, 'list/index.html', context)
+
+# detail view without details
+'''
+def detail(request, Checklist_id):
+    return HttpResponse("You're looking at checklist %s." % Checklist_id)
+'''
+# detail with Http404
+'''
+def detail(request, Checklist_id):
+    try:
+        checklist = Checklist.objects.get(pk=Checklist_id)
+    except Checklist.DoesNotExist:
+        raise Http404("Checklist does not exist")
+    return render(request, 'list/detail.html', {'Checklist': Checklist})
+'''
+# detail with get_object_or_404
+def detail(request, Checklist_id):
+    checklist = get_object_or_404(Checklist, pk=Checklist_id)
+    return render(request, 'list/detail.html', {'checklist': checklist})
+'''
+def index(request):
+    store_list = Checklist.objects.order_by('store_name')
+    template = loader.get_template('list/index.html')
+    context = {
+        'store_list': store_list,
+    }
+    return HttpResponse(template.render(context, request))
+'''
+
+'''
 class IndexView(generic.ListView):
     template_name = 'list.index.html'
     context_object_name = 'store_list'
@@ -38,5 +82,5 @@ class DetailView(generic.DetailView):
 
     def get_queryset(self):
         return Checklist.objects
-
+'''
  
