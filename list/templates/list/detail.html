@@ -4,8 +4,8 @@
 <!-- trying if similar to index.html -->
 {% if list_of_sets %}
     <ul>
-        {% for i in list_of_sets %}
-            <li><a href="/list/{{ i.id }}"><h1>{{ i }}</h1></a></li>
+        {% for sets in list_of_sets %}
+            <li><a href="/list/{{ sets.id }}"><h1>{{ sets }}</h1></a></li>
         {% endfor %}
     </ul>
 {% else %}

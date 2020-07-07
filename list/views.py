@@ -58,15 +58,7 @@ def detail(request, Checklist_id):
 def detail(request, Checklist_id):
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
     return render(request, 'list/detail.html', {'checklist': checklist})
-'''
-def index(request):
-    store_list = Checklist.objects.order_by('store_name')
-    template = loader.get_template('list/index.html')
-    context = {
-        'store_list': store_list,
-    }
-    return HttpResponse(template.render(context, request))
-'''
+
 
 '''
 class IndexView(generic.ListView):
