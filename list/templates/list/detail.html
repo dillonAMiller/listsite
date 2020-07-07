@@ -1,7 +1,7 @@
 
 <!--{{ checklist }}-->
 
-<!-- trying if similar to index.html -->
+<!-- trying if similar to index.html 
 {% if list_of_sets %}
     <ul>
         {% for sets in list_of_sets %}
@@ -11,5 +11,45 @@
 {% else %}
     <p>No Sets are available.</p>
 {% endif %}
+-->
 
 
+
+<!--
+    test of available attributes
+<ol>
+{% for a in checklist.list_of_sets.all %}
+    <li>{{ a.set_name }}</li>
+    <li>{{ a.items_in_set.all }}</li>
+    <li>{{ a.pop_in_set.all }}</li>
+{% endfor %}
+</ol>
+-->
+<h1>{{ checklist.store_name }}</h1>
+
+<ol>
+{% for a in checklist.list_of_sets.all %}
+    <li>{{ a.set_name }}
+        
+        <ol>
+        {% for b in a.items_in_set.all %}
+            <li>{{ b.item_desc }}
+                
+                <ol>
+                {% for c in a.item.all %}
+                    <li>{{ c.item_vpn }}</li>
+                    <li>{{ c.item_crc }}</li>
+                    <li>{{ c.is_displayed }}</li>
+                {% endfor %}
+                </ol>
+
+            </li>
+            <li>{{ b.item_vpn }}</li>
+            <li>{{ b.item_crc }}</li>
+            <li>{{ b.is_displayed }}</li>
+        {% endfor %}
+        </ol>
+        
+    </li>
+{% endfor %}
+</ol>
