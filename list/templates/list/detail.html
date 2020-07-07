@@ -36,17 +36,18 @@
             <li>{{ b.item_desc }}
                 
                 <ol>
-                {% for c in a.item.all %}
-                    <li>{{ c.item_vpn }}</li>
-                    <li>{{ c.item_crc }}</li>
-                    <li>{{ c.is_displayed }}</li>
-                {% endfor %}
+                
+                    <li>{{ b.item_vpn }}</li>
+                    <li>{{ b.item_crc }}</li>
+                    <!-- is displayed, want to have a drop down menu to change is displayed-->
+                    <li>
+                        {{ b.is_displayed }}
+                    </li>
+                
                 </ol>
 
             </li>
-            <li>{{ b.item_vpn }}</li>
-            <li>{{ b.item_crc }}</li>
-            <li>{{ b.is_displayed }}</li>
+            
         {% endfor %}
         </ol>
         

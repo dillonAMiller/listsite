@@ -57,7 +57,6 @@ def detail(request, Checklist_id):
 # detail with get_object_or_404
 def detail(request, Checklist_id):
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
-    
     return render(request, 'list/detail.html', {'checklist': checklist})
 
 

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils.translation import gettext_lazy as _
 # Create your models here.
 
 
@@ -8,6 +8,14 @@ class item(models.Model):
     item_desc = models.CharField(max_length=100)
     item_vpn = models.CharField(max_length=10)
     item_crc = models.CharField(max_length=7)
+    '''
+    class is_displayed(models.IntegerChoices):
+        NO = 0, _('No')
+        YES = 1, _('Yes')
+
+        __empty__ = _('(Unknown')
+    '''
+    
     is_displayed_y_n = (
         ('0', 'No'),
         ('1', 'Yes'),
