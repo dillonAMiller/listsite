@@ -66,7 +66,7 @@ class pop(models.Model):
         ('1', 'Yes'),
     )
     pop_is_displayed = models.CharField(max_length=1, choices=is_displayed_y_n, default='0')
-
+    objects = models.Manager()
     def __str__(self):
         return self.pop_desc
     
@@ -76,7 +76,7 @@ class sets(models.Model):
     set_name = models.CharField(max_length=200)
     items_in_set = models.ManyToManyField(item)
     pop_in_set = models.ManyToManyField(pop)
-
+    objects = models.Manager()
     def __str__(self):
         return self.set_name
 

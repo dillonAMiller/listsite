@@ -41,13 +41,15 @@
                     <li>{{ b.item_crc }}</li>
                     <!-- is displayed, want to have a drop down menu to change is displayed-->
                     <li>
-                        {{ b.is_displayed}}   
+                        <select>
+                            <option>{{ b.is_displayed}}</option>
+                            <option>{{ 1 }}</option>
+                        </select>   
                     </li>
                 </ol>
             </li>
         {% endfor %}
-        </ol>
-        
+        </ol>        
     </li>
 {% endfor %}
 </ol>
