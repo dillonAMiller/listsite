@@ -6,6 +6,7 @@ from django.http import Http404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+# from .forms import is_displayed_form
 
 
 # Create your views here.
@@ -57,6 +58,7 @@ def detail(request, Checklist_id):
 # detail with get_object_or_404
 def detail(request, Checklist_id):
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
+    # form_class = is_displayed_form
     return render(request, 'list/detail.html', {'checklist': checklist})
 
 

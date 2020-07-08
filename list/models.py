@@ -1,14 +1,21 @@
 from django.db import models
-from django.utils.translation import gettext_lazy as _
+from django.forms import ModelForm
+from django import forms
+
 # Create your models here.
-
-
+is_displayed_y_n = (
+        ('0', 'No'),
+        ('1', 'Yes'),
+    )
+    
 
 class item(models.Model):
     item_desc = models.CharField(max_length=100)
     item_vpn = models.CharField(max_length=10)
     item_crc = models.CharField(max_length=7)
     '''
+
+    from django.utils.translation import gettext_lazy as _
     class is_displayed(models.IntegerChoices):
         NO = 0, _('No')
         YES = 1, _('Yes')
@@ -16,12 +23,30 @@ class item(models.Model):
         __empty__ = _('(Unknown')
     '''
     
-    is_displayed_y_n = (
+    
+    is_displayed = models.CharField(max_length=1, choices=is_displayed_y_n, default='0')
+    
+    '''
+is_displayed_choices = (
         ('0', 'No'),
         ('1', 'Yes'),
     )
-    is_displayed = models.CharField(max_length=1, choices=is_displayed_y_n, default='0')
-    
+class is_displayed(models.Model):
+        
+        displayed = models.ForeignKey(choices=is_displayed_choices, on_delete=models.CASCADE, )    
+'''
+    '''
+    class is_displayedForm(forms.ModelForm):
+        class Meta:
+            model = is_displayed
+            fields = ('displayed')
+            widgets = {
+                'displayed': forms.Select(choices=is_displayed_choices)
+            }
+    '''
+    widget=forms.Select(choices=is_displayed_y_n)
+
+
     def __str__(self):
         return self.item_desc
 
@@ -32,6 +57,8 @@ class item(models.Model):
         
         __empty__ = ('(Unknown)')
     '''
+
+
 class pop(models.Model):
     pop_desc = models.CharField(max_length=20)
     pop_is_displayed_y_n = is_displayed_y_n = (
