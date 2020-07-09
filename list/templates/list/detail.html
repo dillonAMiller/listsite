@@ -49,6 +49,10 @@
                 </ol>
             </li>
         {% endfor %}
+        {% for b in a.pop_in_set.all %}
+            <li>{{ b.pop_desc }}
+            </li>
+        {% endfor %}
         </ol>        
     </li>
 {% endfor %}
