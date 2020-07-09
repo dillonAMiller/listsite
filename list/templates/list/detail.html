@@ -51,6 +51,10 @@
         {% endfor %}
         {% for b in a.pop_in_set.all %}
             <li>{{ b.pop_desc }}
+                <select>
+                    <option>{{ b.pop_is_displayed }}</option>
+                    <option> 1</option>
+                </select>
             </li>
         {% endfor %}
         </ol>        
