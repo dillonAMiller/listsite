@@ -8,5 +8,5 @@ item_is_displayed_y_n = (
 
 class itemDisplayedForm(forms.Form):
         item_is_displayed = forms.ChoiceField(choices = item_is_displayed_y_n, 
-        label="Is Displayed", widget=forms.Select(), required=True)
+        label="Is Displayed", widget=forms.Select())
         
