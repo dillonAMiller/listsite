@@ -41,7 +41,13 @@
                     <li>{{ b.item_crc }}</li>
                     <!-- is displayed, want to have a drop down menu to change is displayed-->
                     <li>
-                        {{ b.item_is_displayed}} 
+                        <form action="/detail/" method="post">
+                            {% csrf_token %}
+                            {{ form }}
+                            <input type="submit" value="Submit">
+                        
+                        </form>                        
+
                     </li>
                 </ol>
             </li>

@@ -1,5 +1,5 @@
 from django.db import models
-from django.forms import ModelForm
+
 from django import forms
 
 # Create your models here.
@@ -26,10 +26,10 @@ class item(models.Model):
                 ('0', 'No'),
                 ('1', 'Yes'),
     )
-    item_is_displayed = forms.ChoiceField(choices = item_is_displayed_y_n, label="Is Displayed", initial='', widget=forms.Select(), required=True)
-    '''
-    is_displayed = models.CharField(max_length=1, choices=is_displayed_y_n, default='0')
-    '''
+    
+    
+    item_is_displayed = models.CharField(max_length=1, choices=is_displayed_y_n, default='0')
+    
     '''
 is_displayed_choices = (
         ('0', 'No'),
@@ -48,7 +48,8 @@ class is_displayed(models.Model):
                 'displayed': forms.Select(choices=is_displayed_choices)
             }
     '''
-    widget=forms.Select(choices=is_displayed_y_n)
+    
+    # widget=forms.Select(choices=is_displayed_y_n)
 
 
     def __str__(self):
