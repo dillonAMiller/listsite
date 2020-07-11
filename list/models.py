@@ -22,10 +22,14 @@ class item(models.Model):
 
         __empty__ = _('(Unknown')
     '''
-    
-    
+    item_is_displayed_y_n = (
+                ('0', 'No'),
+                ('1', 'Yes'),
+    )
+    item_is_displayed = forms.ChoiceField(choices = item_is_displayed_y_n, label="Is Displayed", initial='', widget=forms.Select(), required=True)
+    '''
     is_displayed = models.CharField(max_length=1, choices=is_displayed_y_n, default='0')
-    
+    '''
     '''
 is_displayed_choices = (
         ('0', 'No'),
