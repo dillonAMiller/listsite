@@ -1,12 +1,12 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
-from .models import Checklist, item, pop, sets
+from .models import Checklist, item, pop, sets, itemDisplayedForm
 from django.http import Http404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
-from .forms import itemDisplayedForm
+
 
 # from .forms import is_displayed_form
 

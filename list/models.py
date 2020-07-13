@@ -30,6 +30,19 @@ class item(models.Model):
     
     item_is_displayed = models.CharField(max_length=1, choices=is_displayed_y_n, default='0')
     
+    def __str__(self):
+        return self.item_desc
+        
+item_is_displayed_y_n = (
+                ('0', 'No'),
+                ('1', 'Yes'),
+    )
+
+class itemDisplayedForm(forms.ModelForm):
+    class Meta:
+        model = item
+        fields = ('item_is_displayed',)
+        choices = item_is_displayed_y_n
     '''
 is_displayed_choices = (
         ('0', 'No'),
@@ -52,8 +65,7 @@ class is_displayed(models.Model):
     # widget=forms.Select(choices=is_displayed_y_n)
 
 
-    def __str__(self):
-        return self.item_desc
+    
 
     '''
     class is_displayed(models.Model):
