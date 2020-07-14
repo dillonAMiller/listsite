@@ -11,13 +11,13 @@ class Checklist(models.Model):
     def __str__(self):
         return self.store_name
 
-    class set(models.Model):
+    class Set(models.Model):
         set_name = models.CharField(max_length=200)
         objects = models.Manager()
         def __str__(self):
             return self.set_name
 
-        class item(models.Model):
+        class Item(models.Model):
             item_desc = models.CharField(max_length=100)
             item_vpn = models.CharField(max_length=10)
             item_crc = models.CharField(max_length=7)
@@ -33,7 +33,7 @@ class Checklist(models.Model):
 
             item_is_displayed = models.CharField(max_length=3, choices=item_is_displayed_choices, default='No')
 
-        class pop(models.Model):
+        class Pop(models.Model):
             pop_desc = models.CharField(max_length=20)
             objects = models.Manager()
             def __str__(self):
@@ -46,6 +46,6 @@ class Checklist(models.Model):
 
             pop_is_displayed = models.CharField(max_length=3, choices=pop_is_displayed_choices, default='No')
 
-        items_in_set = models.ManyToManyField(item)
-        pop_in_set = models.ManyToManyField(pop)
-    list_of_sets = models.ManyToManyField(set)
+        items_in_set = models.ManyToManyField(Item)
+        pop_in_set = models.ManyToManyField(Pop)
+    list_of_sets = models.ManyToManyField(Set)

@@ -58,8 +58,24 @@ def detail(request, Checklist_id):
     return render(request, 'list/detail.html', {'Checklist': Checklist})
 '''
 # detail with get_object_or_404
+'''
 def detail(request, Checklist_id):
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
+    return render(request, 'list/detail.html', {'checklist': checklist})
+'''
+# detail with set list links
+
+def detail(request, Checklist_id, Set_id):
+    set_list = Checklist.Set.objects.order_by('set_name')
+    context = {'set_list': set_list}
+    sets = get_object_or_404(Checklist.Set, pk=Checklist.Set_id)
+    checklist = get_object_or_404(Checklist, pk=Checklist_id)
+    return render(request, 'list/detail.html', {'checklist': checklist}, {'sets': sets}, context)
+
+
+
+# is displayed form 
+'''
     if request.method == 'POST':
         form = itemDisplayedForm(request.POST)
         if form.is_valid():
@@ -70,7 +86,14 @@ def detail(request, Checklist_id):
         
     
     # form = itemDisplayedForm(request.POST)
+    
     return render(request, 'list/detail.html', {'checklist': checklist, 'form': form})
+'''
+
+
+def setDetail(request, Set_id):
+    sets = get_object_or_404(Checklist.Set, pk=Set_id)
+    return render(request, 'list/setDetail.html', { 'sets': sets})
 
 '''
 class IndexView(generic.ListView):

@@ -27,6 +27,16 @@
 -->
 <h1>{{ checklist.store_name }}</h1>
 
+{% if set_list %}
+    <ul>
+        {% for set in set_list %}
+            <li><a href="/list/{{ checklist.id }}/{{ set.id }}"><h1>{{ set }}</h1></a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No sets are available.</p>
+{% endif %}
+
 <ol>
 {% for a in checklist.list_of_sets.all %}
     <li>{{ a.set_name }}
@@ -41,6 +51,7 @@
                     <li>{{ b.item_crc }}</li>
                     <!-- is displayed, want to have a drop down menu to change is displayed-->
                     <li>{{ b.item_is_displayed }}</li>
+                    <!--
                     <li>
                         <form action="" method="post">
                             {% csrf_token %}
@@ -50,6 +61,7 @@
                         </form>                        
 
                     </li>
+                    -->
                 </ol>
             </li>
         {% endfor %}
