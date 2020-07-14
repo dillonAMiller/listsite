@@ -1,12 +1,12 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
-from .models import Checklist, item, pop, sets, itemDisplayedForm
+from .models import Checklist
 from django.http import Http404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
-
+from .forms import itemDisplayedForm, popDisplayedForm
 
 # from .forms import is_displayed_form
 
@@ -60,7 +60,16 @@ def detail(request, Checklist_id):
 # detail with get_object_or_404
 def detail(request, Checklist_id):
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
-    form = itemDisplayedForm(request.POST)
+    if request.method == 'POST':
+        form = itemDisplayedForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'list/detail.html', {'checklist': checklist, 'form': form})
+    else:
+        form = itemDisplayedForm()
+        
+    
+    # form = itemDisplayedForm(request.POST)
     return render(request, 'list/detail.html', {'checklist': checklist, 'form': form})
 
 '''

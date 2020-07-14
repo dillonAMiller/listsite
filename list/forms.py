@@ -1,12 +1,12 @@
 from django import forms
-from .models import item
+from .models import Checklist
+class itemDisplayedForm(forms.ModelForm):
+            class Meta:
+                model = Checklist.set.item
+                fields = ('item_is_displayed',)
 
-item_is_displayed_y_n = (
-        ('0', 'No'),
-        ('1', 'Yes'),
-)
-
-class itemDisplayedForm(forms.Form):
-        item_is_displayed = forms.ChoiceField(choices = item_is_displayed_y_n, 
-        label="Is Displayed", widget=forms.Select())
+class popDisplayedForm(forms.ModelForm):
+            class Meta:
+                model = Checklist.set.pop
+                fields = ('pop_is_displayed',)
         

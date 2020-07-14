@@ -5,11 +5,6 @@ from django.contrib import admin
 from . import models
 
 admin.site.register(models.Checklist)
-admin.site.register(models.item)
-admin.site.register(models.pop)
-admin.site.register(models.sets)
-
-'''
-is_displayed object changed to attribute
-admin.site.register(models.item.is_displayed)
-'''
+admin.site.register(models.Checklist.set.item)
+admin.site.register(models.Checklist.set.pop)
+admin.site.register(models.Checklist.set)
