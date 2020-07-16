@@ -1,12 +1,12 @@
 from django import forms
-from .models import Checklist
+from .models import Checklist, Set, Item, Pop
 class itemDisplayedForm(forms.ModelForm):
             class Meta:
-                model = Checklist.Set.Item
-                fields = ('item_is_displayed',)
+                model = Item
+                fields = ('itemDisplayed',)
 
 class popDisplayedForm(forms.ModelForm):
             class Meta:
-                model = Checklist.Set.Pop
-                fields = ('pop_is_displayed',)
+                model = Pop
+                fields = ('popDisplayed',)
         

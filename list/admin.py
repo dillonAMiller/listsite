@@ -5,6 +5,6 @@ from django.contrib import admin
 from . import models
 
 admin.site.register(models.Checklist)
-admin.site.register(models.Checklist.Set.Item)
-admin.site.register(models.Checklist.Set.Pop)
-admin.site.register(models.Checklist.Set)
+admin.site.register(models.Item)
+admin.site.register(models.Pop)
+admin.site.register(models.Set)

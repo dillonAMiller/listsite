@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
-from .models import Checklist
+from .models import Checklist, Set, Item, Pop
 from django.http import Http404
 from django.urls import reverse
 from django.views import generic
@@ -58,20 +58,21 @@ def detail(request, Checklist_id):
     return render(request, 'list/detail.html', {'Checklist': Checklist})
 '''
 # detail with get_object_or_404
-'''
+
 def detail(request, Checklist_id):
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
+    
     return render(request, 'list/detail.html', {'checklist': checklist})
-'''
-# detail with set list links
 
+# detail with set list links
+'''
 def detail(request, Checklist_id, Set_id):
-    set_list = Checklist.Set.objects.order_by('set_name')
+    set_list = Set.objects.order_by('set_name')
     context = {'set_list': set_list}
-    sets = get_object_or_404(Checklist.Set, pk=Set_id)
+    sets = get_object_or_404(Set, pk=Set_id)
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
     return render(request, 'list/detail.html', {'checklist': checklist}, {'sets': sets}, context)
-
+'''
 
 
 # is displayed form 
@@ -92,7 +93,7 @@ def detail(request, Checklist_id, Set_id):
 
 
 def setDetail(request, Set_id):
-    sets = get_object_or_404(Checklist.Set, pk=Set_id)
+    sets = get_object_or_404(Checklist, pk=Set_id)
     return render(request, 'list/setDetail.html', { 'sets': sets})
 
 '''
