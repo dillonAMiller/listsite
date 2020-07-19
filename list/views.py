@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from .forms import itemDisplayedForm, popDisplayedForm
+from .models import itemIsDisplayedForm, popIsDisplayedForm
 
 # from .forms import is_displayed_form
 
@@ -43,6 +44,13 @@ def index(request):
     context = {'store_list': store_list}
     return render(request, 'list/index.html', context)
 
+
+def listIndex(request, Checklist_id):
+    checklist = get_object_or_404(Checklist, pk=Checklist_id)
+    set_list = Set.objects.order_by('id')
+    return render(request, 'list/listIndex.html', {'checklist': checklist}, {'set_list', set_list})
+
+
 # detail view without details
 '''
 def detail(request, Checklist_id):
@@ -58,11 +66,22 @@ def detail(request, Checklist_id):
     return render(request, 'list/detail.html', {'Checklist': Checklist})
 '''
 # detail with get_object_or_404
-
+'''
 def detail(request, Checklist_id):
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
+    item = Item.objects.get(pk=1)
+
+    form = itemIsDisplayedForm(instance=item)
     
-    return render(request, 'list/detail.html', {'checklist': checklist})
+    form.save()
+    return render(request, 'list/detail.html', {'checklist': checklist, 'form': form})
+
+        
+    
+    # form = itemDisplayedForm(request.POST)
+    
+    # return render(request, 'list/detail.html', {'checklist': checklist, 'form': form})
+'''
 
 # detail with set list links
 '''
@@ -76,20 +95,6 @@ def detail(request, Checklist_id, Set_id):
 
 
 # is displayed form 
-'''
-    if request.method == 'POST':
-        form = itemDisplayedForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(request, 'list/detail.html', {'checklist': checklist, 'form': form})
-    else:
-        form = itemDisplayedForm()
-        
-    
-    # form = itemDisplayedForm(request.POST)
-    
-    return render(request, 'list/detail.html', {'checklist': checklist, 'form': form})
-'''
 
 
 def setDetail(request, Set_id):

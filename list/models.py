@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.forms import ModelForm
 from django import forms
 
 # Create your models here.
@@ -24,6 +24,11 @@ class Item(models.Model):
 
     itemDisplayed = models.CharField(max_length=3, choices=item_is_displayed_choices, default='No')
 
+class itemIsDisplayedForm(ModelForm):
+    class Meta:
+        model = Item
+        fields = ['itemDisplayed']
+
 class Pop(models.Model):
     pop_desc = models.CharField(max_length=20)
     objects = models.Manager()
@@ -36,6 +41,13 @@ class Pop(models.Model):
     )
 
     popDisplayed = models.CharField(max_length=3, choices=pop_is_displayed_choices, default='No')
+
+
+class popIsDisplayedForm(ModelForm):
+    class Meta:
+        model = Pop
+        fields = ['popDisplayed']
+
 class Set(models.Model):
     set_name = models.CharField(max_length=200)
     objects = models.Manager()
