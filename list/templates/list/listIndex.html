@@ -1,1 +1,11 @@
 <h1> {{ checklist.store_name }} </h1>
+
+{% if set_list %}
+    <ul>
+        {% for sets in set_list %}
+            <li><a href="/list/{{ checklist.id }}/{{ sets.id }}"><h1>{{ sets }}</h1></a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No Sets available</p>
+{% endif %}

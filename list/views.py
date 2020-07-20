@@ -45,10 +45,17 @@ def index(request):
     return render(request, 'list/index.html', context)
 
 
-def listIndex(request, Checklist_id):
+def listIndex(request, Checklist_id, Set_id):
+    sets = get_object_or_404(Set, pk=Set_id)
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
+        
     set_list = Set.objects.order_by('id')
-    return render(request, 'list/listIndex.html', {'checklist': checklist}, {'set_list', set_list})
+    context = {
+        'checklist': checklist, 
+        'set_list': set_list,
+        'sets': sets
+    }
+    return render(request, 'list/listIndex.html', context)
 
 
 # detail view without details
