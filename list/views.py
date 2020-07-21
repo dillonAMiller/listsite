@@ -103,9 +103,9 @@ def detail(request, Checklist_id, Set_id):
 # is displayed form 
 
 
-def setDetail(request, Set_id):
-    sets = get_object_or_404(Checklist, pk=Set_id)
-    return render(request, 'list/setDetail.html', { 'sets': sets})
+def setDetail(request, Checklist_id, Set_id):
+    sets = get_object_or_404(Set, pk=Set_id)
+    return render(request, 'list/setDetail.html', { 'sets': sets })
 
 '''
 class IndexView(generic.ListView):
