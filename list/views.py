@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, get_list_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
 from .models import Checklist, Set, Item, Pop
@@ -45,10 +45,9 @@ def index(request):
     return render(request, 'list/index.html', context)
 
 
-def listIndex(request, Checklist_id, Set_id):
-    sets = get_object_or_404(Set, pk=Set_id)
+def listIndex(request, Checklist_id):
+    sets = get_list_or_404(Set)
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
-        
     set_list = Set.objects.order_by('id')
     context = {
         'checklist': checklist, 
