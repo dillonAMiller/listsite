@@ -1,2 +1,10 @@
 <h1>{{ sets.set_name }}</h1>
-
+{% if itemlist %}
+    <ul>
+    {% for i in itemlist %}
+        <li><a href="/list/{{ checklist.id }}/{{ sets.id }}/{{ item.id }}"><h1>{{ i }}</h1></a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No items</p>
+{% endif %}

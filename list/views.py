@@ -57,6 +57,19 @@ def listIndex(request, Checklist_id):
     return render(request, 'list/listIndex.html', context)
 
 
+def setDetail(request, Checklist_id, Set_id):
+    item = get_list_or_404(Item)
+    sets = get_object_or_404(Set, pk=Set_id)
+    itemlist = Item.objects.order_by('id')
+    
+    context = {
+        'sets': sets,
+        'itemlist': itemlist,
+        'item': item
+    }
+    return render(request, 'list/setDetail.html', context)
+
+
 # detail view without details
 '''
 def detail(request, Checklist_id):
@@ -103,9 +116,7 @@ def detail(request, Checklist_id, Set_id):
 # is displayed form 
 
 
-def setDetail(request, Checklist_id, Set_id):
-    sets = get_object_or_404(Set, pk=Set_id)
-    return render(request, 'list/setDetail.html', { 'sets': sets })
+
 
 '''
 class IndexView(generic.ListView):
