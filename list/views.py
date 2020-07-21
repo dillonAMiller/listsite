@@ -69,6 +69,9 @@ def setDetail(request, Checklist_id, Set_id):
     }
     return render(request, 'list/setDetail.html', context)
 
+def itemDetail(request, Checklist_id, Set_id):
+    return render(request, 'list/itemDetail.html')
+
 
 # detail view without details
 '''

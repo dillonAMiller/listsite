@@ -3,7 +3,14 @@
     <ul>
     {% for i in itemlist %}
         <li><a href="/list/{{ checklist.id }}/{{ sets.id }}/{{ item.id }}"><h1>{{ i }}</h1></a></li>
-    {% endfor %}
+            <ol>
+                <li>{{ i.id }}</li>
+                <li>{{ i.item_vpn }}</li>
+                <li>{{ i.item_crc }}</li>
+                    <!-- is displayed, want to have a drop down menu to change is displayed-->
+                <li>{{ i.itemDisplayed }}</li>
+            </ol>
+        {% endfor %}
     </ul>
 {% else %}
     <p>No items</p>
