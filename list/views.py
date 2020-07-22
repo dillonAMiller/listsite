@@ -61,16 +61,29 @@ def setDetail(request, Checklist_id, Set_id):
     item = get_list_or_404(Item)
     sets = get_object_or_404(Set, pk=Set_id)
     itemlist = Item.objects.order_by('id')
-    
+    checklist = get_object_or_404(Checklist, pk=Checklist_id)
+
     context = {
         'sets': sets,
         'itemlist': itemlist,
-        'item': item
+        'item': item,
+        'checklist': checklist
     }
     return render(request, 'list/setDetail.html', context)
 
-def itemDetail(request, Checklist_id, Set_id):
-    return render(request, 'list/itemDetail.html')
+def itemDetail(request, Checklist_id, Set_id, Item_id):
+    checklist = get_object_or_404(Checklist, pk=Checklist_id)
+    sets = get_object_or_404(Set, pk=Set_id)
+    item = get_list_or_404(Item)
+    itemlist = Item.objects.order_by('id')
+    context = {
+        'sets': sets,
+        'itemlist': itemlist,
+        'item': item,
+        'checklist': checklist
+    }
+
+    return render(request, 'list/itemDetail.html', context)
 
 
 # detail view without details
