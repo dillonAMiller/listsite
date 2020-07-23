@@ -1,4 +1,18 @@
 <h1>{{ sets.set_name }}</h1>
+
+
+<ol>
+    {% for a in sets.items_in_set.all %}
+        <ul>
+            <li><a href="/list/{{ checklist.id }}/{{ sets.id }}/{{ a.id }}">{{ a.item_desc }}</a>
+                <ul>
+                    <li>{{ a.itemDisplayed }}</li>
+                </ul>
+            </li>
+        </ul>
+        {% endfor %}
+</ol>
+<!--
 {% if itemlist %}
     <ul>
     {% for i in itemlist %}
@@ -7,7 +21,6 @@
                 <li>{{ i.id }}</li>
                 <li>{{ i.item_vpn }}</li>
                 <li>{{ i.item_crc }}</li>
-                    <!-- is displayed, want to have a drop down menu to change is displayed-->
                 <li>{{ i.itemDisplayed }}</li>
             </ol>
         {% endfor %}
@@ -15,13 +28,4 @@
 {% else %}
     <p>No items</p>
 {% endif %}
-
-<br>--
-<br>
-<ol>
-    {% for a in sets.items_in_set.all %}
-        <ul>
-            <li><a href="/list/{{ checklist.id }}/{{ sets.id }}/{{ a.id }}"></a>{{ a.item_desc }}</li>
-        </ul>
-        {% endfor %}
-</ol>
+-->

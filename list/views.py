@@ -58,14 +58,14 @@ def listIndex(request, Checklist_id):
 
 
 def setDetail(request, Checklist_id, Set_id):
-    item = get_list_or_404(Item)
+    # item = get_list_or_404(Item)
     sets = get_object_or_404(Set, pk=Set_id)
     
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
 
     context = {
         'sets': sets,
-        'item': item,
+        # 'item': item,
         'checklist': checklist
     }
     return render(request, 'list/setDetail.html', context)
@@ -73,11 +73,12 @@ def setDetail(request, Checklist_id, Set_id):
 def itemDetail(request, Checklist_id, Set_id, Item_id):
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
     sets = get_object_or_404(Set, pk=Set_id)
-    item = get_list_or_404(Item)
-    itemlist = Set.items_in_set.objects.order_by('id')
+    item = get_object_or_404(Item, pk=Item_id)
+    
+    # itemlist = Set.items_in_set.objects.order_by('id')
     context = {
         'sets': sets,
-        'itemlist': itemlist,
+        # 'itemlist': itemlist,
         'item': item,
         'checklist': checklist
     }
