@@ -60,7 +60,7 @@ def listIndex(request, Checklist_id):
 def setDetail(request, Checklist_id, Set_id):
     item = get_list_or_404(Item)
     sets = get_object_or_404(Set, pk=Set_id)
-    itemlist = Item.objects.order_by('id')
+    itemlist = Item.objects.filter(set=Set)
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
 
     context = {
@@ -75,7 +75,7 @@ def itemDetail(request, Checklist_id, Set_id, Item_id):
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
     sets = get_object_or_404(Set, pk=Set_id)
     item = get_list_or_404(Item)
-    itemlist = Item.objects.order_by('id')
+    itemlist = Set.items_in_set.objects.order_by('id')
     context = {
         'sets': sets,
         'itemlist': itemlist,
