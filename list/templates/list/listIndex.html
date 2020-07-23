@@ -2,7 +2,7 @@
 
 {% if set_list %}
     <ul>
-        {% for sets in set_list %}
+        {% for sets in checklist.list_of_sets.all %}
             <li><a href="/list/{{ checklist.id }}/{{ sets.id }}"><h1>{{ sets }}</h1></a></li>
         {% endfor %}
     </ul>

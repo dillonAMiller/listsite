@@ -15,3 +15,13 @@
 {% else %}
     <p>No items</p>
 {% endif %}
+
+<br>--
+<br>
+<ol>
+    {% for a in sets.items_in_set.all %}
+        <ul>
+            <li><a href="/list/{{ checklist.id }}/{{ sets.id }}/{{ a.id }}"></a>{{ a.item_desc }}</li>
+        </ul>
+        {% endfor %}
+</ol>
