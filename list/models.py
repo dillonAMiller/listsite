@@ -21,12 +21,21 @@ class Item(models.Model):
             ('0', 'No'),
             ('1', 'Yes'),
     )
-
     itemDisplayed = models.CharField(max_length=3, choices=item_is_displayed_choices, default='No')
-
+    
+    class itemDisplayedModel(models.Model):
+        item_is_displayed_choices = (
+            ('0', 'No'),
+            ('1', 'Yes'),
+    )
+        itemDisplayed = models.CharField(max_length=3, choices=item_is_displayed_choices, default='No')
+        def __str__(self):
+            return self.itemDisplayed
+            
+    itemDisplayedtest = models.ManyToManyField(itemDisplayedModel)
 class itemIsDisplayedForm(ModelForm):
     class Meta:
-        model = Item
+        model = Item.itemDisplayedModel
         fields = ['itemDisplayed']
 
 class Pop(models.Model):
