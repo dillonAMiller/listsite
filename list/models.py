@@ -4,10 +4,6 @@ from django import forms
 
 # Create your models here.
 
-
-
-
-    
 class Item(models.Model):
     item_desc = models.CharField(max_length=100)
     item_vpn = models.CharField(max_length=10)
@@ -31,7 +27,7 @@ class Item(models.Model):
         itemDisplayed = models.CharField(max_length=3, choices=item_is_displayed_choices, default='No')
         def __str__(self):
             return self.itemDisplayed
-            
+
     itemDisplayedtest = models.ManyToManyField(itemDisplayedModel)
 class itemIsDisplayedForm(ModelForm):
     class Meta:
