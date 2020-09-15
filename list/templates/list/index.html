@@ -11,12 +11,12 @@
     <link href="{% static '/css/mainstyle.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <div class="container text-center">
+    <div class="container">
         <div>
         {% if store_list %}
-            <ul>
+            <ul id="stores_list">
                 {% for checklist in store_list %}
-                    <li><a class="store-names" href="/list/{{ checklist.id }}"><h1>{{ checklist }}</h1></a></li>
+                    <li id="store-names"><a href="/list/{{ checklist.id }}">{{ checklist }}</a></li>
                 {% endfor %}
             </ul>
         {% else %}
