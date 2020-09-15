@@ -9,38 +9,7 @@ ul {
     list-style-type: none;
     font-size: 20;
 }
-ul li {
+
+ul li a{
     color: black;
-    background: grey;
-    margin: 5px;
-    font-size: 20;
-}
-
-
-h1 {
-    font-size: 40px;
-}
-
-h1:visited {
-    color: red;
-    text-decoration: none;
-}
-
-h1:link {
-    color: red;
-    text-decoration: none;
-}
-
-h1:hover {
-    color: grey;
-    text-decoration: none;
-}
-
-h1:active {
-    color: red;
-    text-decoration: none;
-}
-
-a.store_names:link {
-    color: red;
 }
