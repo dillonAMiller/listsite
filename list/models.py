@@ -69,3 +69,12 @@ class Checklist(models.Model):
     list_of_sets = models.ManyToManyField(Set)
     def __str__(self):
         return self.store_name
+
+def is_displayed(item):
+    if item.itemDisplayed == '0':
+        item.itemDisplayed = '1'
+
+def is_not_displayed(item):
+    if item.itemDisplayed == '1':
+        item.itemDisplayed = '0'
+
