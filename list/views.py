@@ -1,13 +1,14 @@
 from django.shortcuts import get_object_or_404, render, get_list_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
-from .models import Checklist, Set, Item, Pop
+from .models import Checklist, Set, Item, Pop, itemDisplayedModel
 from django.http import Http404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from .forms import itemDisplayedForm, popDisplayedForm
-from .models import itemIsDisplayedForm, popIsDisplayedForm
+'''from .models import itemIsDisplayedForm, popIsDisplayedForm'''
+from .models import is_displayed, is_not_displayed
 
 # from .forms import is_displayed_form
 
@@ -72,6 +73,7 @@ def itemDetail(request, Checklist_id, Set_id, Item_id):
     checklist = get_object_or_404(Checklist, pk=Checklist_id)
     sets = get_object_or_404(Set, pk=Set_id)
     item = get_object_or_404(Item, pk=Item_id)
+    itemDisplayed = get_list_or_404(itemDisplayedModel)
     
     # itemlist = Set.items_in_set.objects.order_by('id')
     context = {

@@ -3,6 +3,15 @@ from django.forms import ModelForm
 from django import forms
 
 # Create your models here.
+class itemDisplayedModel(models.Model):
+    item_is_displayed_choices = (
+        ('0', 'No'),
+        ('1', 'Yes'),
+    )
+    objects = models.Manager()
+    itemDisplayed = models.CharField(max_length=3, choices=item_is_displayed_choices, default='No')
+    def __str__(self):
+        return self.itemDisplayed
 
 class Item(models.Model):
     item_desc = models.CharField(max_length=100)
@@ -19,20 +28,11 @@ class Item(models.Model):
     )
     itemDisplayed = models.CharField(max_length=3, choices=item_is_displayed_choices, default='No')
     
-    class itemDisplayedModel(models.Model):
-        item_is_displayed_choices = (
-            ('0', 'No'),
-            ('1', 'Yes'),
-    )
-        itemDisplayed = models.CharField(max_length=3, choices=item_is_displayed_choices, default='No')
-        def __str__(self):
-            return self.itemDisplayed
-
     itemDisplayedtest = models.ManyToManyField(itemDisplayedModel)
-class itemIsDisplayedForm(ModelForm):
+'''class itemIsDisplayedForm(ModelForm):
     class Meta:
         model = Item.itemDisplayedModel
-        fields = ['itemDisplayed']
+        fields = ['itemDisplayed']'''
 
 class Pop(models.Model):
     pop_desc = models.CharField(max_length=20)
